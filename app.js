@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
+// const axios = require('axios');
 const path = require('path');
 const apiRoute = require('./routes/api');
 
@@ -20,7 +20,7 @@ app.use(function(req,res){
 	res.status(404).render('notFoundPage', { error: 'page not found'}); 
 });
 
-app.set('port', process.env.PORT || 2008);
+app.set('port', process.env.PORT || 2222);
 const server = app.listen(app.get('port'), () => {
   console.log(`Server running at PORT ${server.address().port}`);
 });
