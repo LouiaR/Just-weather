@@ -1,0 +1,47 @@
+<% include partials/header %>
+
+<form action="/" method="POST">
+  <input type="text" name="city">
+  <input type="text" name="country">
+  <button>Submit</button>
+</form>
+<!-- <form action="/" method="POST"> -->
+  <button  onclick="getLocation()">Current location</button>
+<!-- </form> -->
+<div id="demo">
+</div>
+<form action="">
+  <input type="text" name="" id="dimo">
+</form>
+  <div class="weather" >
+    <% if(data) {%>
+      <div class="weather-country"> 
+        <h3>Current weather in <%= data.name %>, <%= data.sys.country %></h3> 
+      </div>
+      <div class="weather-icon"> 
+        <img src="http://openweathermap.org/img/w/<%= data.weather[0].icon %>.png">
+        <span><%= data.main.temp %> </span>
+        <span><%= data.weather[0].description %></span>
+        <span></span>
+      </div>
+      <div class="weather-wind">
+        Wind: <span><%= data.wind.speed %> m/s </span>
+      </div>
+      <div class="weather-cloudiness">Cloudiness:</div>
+      <div class="weather-pressure">
+        Pressure: <span><%= data.main.pressure %> hpa </span>
+      </div>
+      <div class="weather-humidity">
+        Humidity: <span><%= data.main.humidity %> % </span>
+      </div>
+      <div class="weather-sunrise">
+          Sunrise: <span> <%= (new Date( data.sys.sunrise * 1000)).getHours() %> :<%= (new Date( data.sys.sunrise * 1000)).getMinutes() %> </span>       
+      </div>
+      <div class="weather-sunset">
+        Sunset: <span><%= (new Date( data.sys.sunset * 1000)).getHours() %> :<%= (new Date( data.sys.sunset * 1000)).getMinutes() %> </span>
+      </div>
+    <%}%>
+    </div>
+
+
+<% include partials/footer %>

@@ -1,12 +1,12 @@
 {
-  "name": "just-weather",
+  "name": "check-weather",
   "version": "1.0.0",
   "description": "A website that shows the real-time weather.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./app.js"
   },
-  "author": "Louis",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
