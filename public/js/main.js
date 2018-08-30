@@ -1,11 +1,4 @@
-const element = document.querySelector("#dimo");
-let data = 'undefined'
-function twoDigits(value) {
-  if(value < 10) {
-   return '0' + value;
-  }
-  return value;
-}
+const element = document.querySelector("#container");
 
 const getLocation = () => {
   if (navigator.geolocation) {
@@ -15,28 +8,21 @@ const getLocation = () => {
   }
 }
 
-const createChild = (text, classes, tag) => {
-  const node = document.createElement("h3"); 
-  const parent = document.createElement(tag); 
-  const textnode = document.createTextNode(text);
-  node.appendChild(textnode);
-  parent.appendChild(node);
-  parent.classList.add(classes)
-  element.appendChild(parent);
+const twoDigits = (value) => {
+  if(value < 10) {
+   return '0' + value;
+  }
+  return value;
 }
 
-const createChildImg = (image) => {
-  const node = document.createElement("img"); 
-  const parent = document.createElement('div'); 
-  node.src = "http://openweathermap.org/img/w/" + image + ".png"
-  parent.appendChild(node);
-  parent.classList.add('weather-icon');
-  element.appendChild(parent);
+const select = (element) => {
+  return document.querySelector(element)
 }
 
-const date = (time) => {
- return new Date( time * 1000)
+const convertTimeToHour = (dt) => {
+ return twoDigits(new Date(dt * 1000)).getHours() + ":" + twoDigits(new Date(dt * 1000)).getMinutes()
 }
+
 const successFunction = (position) => {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
@@ -46,16 +32,39 @@ const successFunction = (position) => {
     fetch('https://openweathermap.org/data/2.5/weather?' + 'lat=' + lat + '&' + 'lon=' + long + '&appid=b6907d289e10d714a6e88b30761fae22')
       .then(data => data.json())
       .then(res => {
-       createChild('Current weather in ' + res.name + ', ' + res.sys.country, 'weather-country', 'div');
-       createChildImg(res.weather[0].icon );
-       createChild('Wind: ' + res.wind.speed +' m/s', 'weather-speed', 'div'); 
-       createChild('Pressure: ' + res.main.pressure + ' %', 'weather-pressure', 'div'); 
-       createChild('Humidity: ' + res.main.humidity + ' %', 'weather-pressure', 'div');
-       createChild(`Sunrise: ${date( res.sys.sunrise).getHours()}:${date( res.sys.sunrise).getMinutes()}` , 'weather-sunrise', 'div'); 
-       createChild(`Sunset: ${date( res.sys.sunset).getHours()}:${date( res.sys.sunset).getMinutes()}` , 'weather-sunrise', 'div');
+
+      // City and country  
+       select('.weather-location').innerHTML = `<p> Current weather in  ${res.name}, ${res.sys.country} </p>` ;
+
+      // Icon 
+       select('.icon').innerHTML = `<img src=http://openweathermap.org/img/w/${res.weather[0].icon}.png alt=weather-icon >`
+
+       // Temperature
+       select('.temp').innerHTML = `${res.main.temp} &#x2103;`
+
+       // Description
+       select('.desc').innerHTML = `${res.weather[0].description}`;
+
+       // Humidity
+       select('.humidity').innerHTML = `${res.main.humidity} &#x25;`;
+
+       // Speed
+       select('.weather-wind').innerHTML = `Wind: ${res.wind.speed} m/s`;
+
+       // Sunrise
+       select('.sunrise').innerHTML = `Sunrise: ${convertTimeToHour(res.sys.sunrise)} &#xa0;&#xa0;|&#xa0;&#xa0;`;
+
+       // Sunset
+       select('.sunset').innerHTML = `Sunset: ${convertTimeToHour(res.sys.sunset)}`;
+
+       // Temp min
+       select('.tempmin').innerHTML = `${res.main.temp_min} &#x2103  &#xa0;&#xa0;|&#xa0;&#xa0;`;
+
+       // Temp max
+       select('.tempmax').innerHTML = `  ${res.main.temp_max} &#x2103`;
       })
       .catch(err => {
-        element.innerHTML = "elemn"
+        element.innerHTML = "Ooops something went wrong"
       })
   }
 }

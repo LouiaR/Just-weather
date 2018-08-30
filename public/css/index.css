@@ -3,3 +3,97 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+}
+
+.weather-container {
+  padding: 0 2rem;
+}
+
+header {
+  background: red;
+}
+
+.weather-head {
+  display: flex;
+  justify-content: space-between;
+  height: 15vh;
+  margin-bottom: 5rem;
+  align-items: center;
+}
+
+.weather-find .weather-container {
+  display: flex;
+  justify-content: center;
+}
+
+div a {
+  text-decoration: none;
+  color: #fff;
+}
+
+div a:hover {
+  text-decoration: none;
+  background: green;
+  color: #fff;
+}
+
+.weather-btn {
+  margin-left: 1rem;
+  background: none;
+  border: 0;
+  font-size: 95%;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.weather-btn:hover,
+.weather-btn:focus {
+  text-decoration: underline;
+  border: 0;
+}
+
+.weather-container input,
+.weather-container button {
+  padding: 8px 10px;
+}
+
+.weather-location {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-location {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.weather-info {
+  flex-direction: column;
+}
+
+.icon {
+  width: 20vw;
+}
+
+img { width: 100%; }
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.weather-sys,
+div .weather-main {
+  justify-content: space-evenly;
+}
+
+.weather-sys div {
+  display: flex;
+}
+
