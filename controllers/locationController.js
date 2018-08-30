@@ -45,7 +45,7 @@ exports.getWeather = (async (req, res ) => {
     const wind = Math.round(weather.wind.speed);
 
     res.render('home', { 
-      Name: cityName,
+      city: cityName,
       country: country,
       temp: temp,
       tempMax: tempMax,

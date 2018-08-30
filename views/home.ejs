@@ -12,7 +12,7 @@
 
 <div class="weather-container" id="container">
   <div class="weather">
-    <div class="weather-location"> <% if(country) {%> 
+    <div class="weather-location"> <% if(country || city ) {%> 
       <%= city %>,  <%= country %>  
       <%}%>
     </div>
