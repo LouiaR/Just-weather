@@ -167,7 +167,7 @@ footer  {
 @media all and (max-width: 620px) {
   body { 
     font-size: 13px;
-    background: linear-gradient(129deg, #805EF1 46%, #8C8CF1 78%
+    background: linear-gradient(to right, #9d50bb, #6e48aa);
   }
 
  .item { height: auto;}
@@ -185,8 +185,21 @@ footer  {
     width: 100%;
   }
 
+  .weather-box {
+    background: transparent;
+    border: 0;
+    box-shadow: -1px 1px 20px 4px rgba(0,0,0,0.25), 4px -8px 16px rgba(0,0,0,0.22);
+  }
+
   .weather-container input, .weather-container button{
-    margin-bottom: 10px;
+    width: 96%;
+    margin: 0 auto 10px;
+    border: 1px solid #642b9e;
+  }
+
+  .weather-container button {
+    background: #904eb6;
+    color: #fff;
   }
 
   .logo span {
