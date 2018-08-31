@@ -12,18 +12,19 @@ exports.getWeather = (async (req, res) => {
     API_KEY,
     WEATHER_URL
   } = process.env
+  
   try {
     if (!API_KEY || !WEATHER_URL) throw new Error('MISSING_ENV_VARS');
     let url = country ? `${WEATHER_URL }${city},${country}${API_KEY}` : `${WEATHER_URL }${city}${API_KEY}`;
     const response = await axios(url);
     const weather = await response.data;
-    if (weather.id && weather.sys.country) {
+    if (weather && weather.sys.country) {
       // City
       const cityName = weather.name;
 
       // Country 
       const country = weather.sys.country;
-      `   `
+      
       // Time & date   
       const time = weather.dt;
 
