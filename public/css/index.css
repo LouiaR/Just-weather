@@ -176,7 +176,7 @@ footer  {
     padding: 0 5px;
     margin-bottom: 15px;
   }
-  .weather-sys div { padding-bottom: 8px; }
+  .weather-sys div { padding: 10px 0; }
   
   .weather-find .weather-container,
   .weather-sys,
