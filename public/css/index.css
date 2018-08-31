@@ -166,7 +166,8 @@ footer  {
 /* Media query   */
 @media all and (max-width: 620px) {
   body { 
-    font-size: 14px;
+    font-size: 13px;
+    background: linear-gradient(129deg, #805EF1 46%, #8C8CF1 78%
   }
 
  .item { height: auto;}
