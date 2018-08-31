@@ -1,75 +1,82 @@
 <% include partials/header %>
 <div class="weather-find">
   <div class="weather-container">
-    <form action="/" method="POST">
-      <input type="text" name="city" placeholder="Enter city..." required>
-      <input type="text" name="country" placeholder="Enter country...">
-      <button>Submit</button>
+    <form action="/" method="POST" class="o-forms">
+      <input type="text" name="city" placeholder="Enter city..." id="o-forms-standard" class="o-forms__text" required>
+      <input type="text" name="country" placeholder="Enter country..." id="o-forms-standard" class="o-forms__text">
+      <button class="o-buttons o-buttons--primary o-buttons--big">Submit</button>
     </form>
-    <button onclick="getLocation()" class="weather-btn">Current location</button>
+    <a onclick="getLocation()" class="weather-btn">
+      <p>
+        <img src="/images/marker-filled.png" alt="icon-location">
+        Current location
+      </p>
+    </a>
   </div>
 </div>
 
-<div class="weather-container" id="container">
-  <div class="weather">
-    <div class="weather-location"> <% if(country || city ) {%> 
-      <%= city %>,  <%= country %>  
-      <%}%>
+<div class="weather-container box" id="container">
+  <div class="weather <%= addClass %>" >
+    <div class="weather-location item"> <% if(country || city ) {%> 
+      <h3> <%= city %> - <%= country %> </h3>  
+      <% } %>
     </div>
     <div class="weather-content">
-      <div class="weather-info item">
-        <div class="icon">
+
+      <div class="weather-temicon item">  <!-- Temperature  -->
+        <div class="temp"> 
+          <% if(temp) {%>
+            <%= temp %> &#x2103;
+          <%}%>
+        </div>
+        <div class="icon">     <!-- Icon  -->
           <% if(icon ) { %> 
             <img src="<%= icon %>" alt="weather-icon"> 
           <% } %>
         </div>
-          <div class="temp"> 
-              <% if(temp) {%>
-            Temperature: <%= temp %> %
-            <%}%>
-           </div>
-        <div class="desc"> 
-            <% if(desc) {%>
-          Description: <%= desc %>
-          <%}%>
-         </div>
       </div>
-      <div class="weather-main item">
-        <div class="humidity">
-            <% if(humidity) {%> 
-          Humidity: <%= humidity %> % 
-          <%}%>
-        </div>
-      </div>
-      <div class="weather-wind item"> 
+
+      <div class="desc item">   <!-- Description -->
+          <% if(desc) {%>
+           <h4> <%= desc %> </h4>
+        <%}%>
+       </div>
+
+      <div class="weather-sys item">  
+        <div class="weather-wind item"> <!-- Wind -->
           <% if(wind) {%>
-        Wind: <%= wind%> m/s
-        <%}%> 
-      </div>
-      <div class="weather-sys item">
-        <div>
-          <div class="sunrise">
-              <% if(sunrise) {%>
-             Sunrise: <%= sunrise %>&#xa0;&#xa0; | &#xa0;&#xa0;
-             <%}%> 
-            </div>
-          <div class="sunset"> 
-              <% if(sunset) {%>
-            Sunset: <%= sunset %>
+            <span> <img src="/images/air-element.png" alt="air-icon"> </span> <%= wind%> m/s
+            <p> Wind speed </p>
+          <%}%> 
+        </div>
+        <div class="humidity item"> <!-- Humidity -->
+          <% if(humidity) {%> 
+            <img src="/images/wet.png" alt="humidity-icon"> 
+            <p> <%= humidity %> %  </p>
+            <p> Humidity </p>
             <%}%>
           </div>
+        <div class="sunrise item">  <!-- Sun -->
+            <% if(sunrise) {%>
+              <img src="/images/summer.png" alt="sun-icon">
+            <%}%> 
+          <div class="">
+                <% if(sunrise) {%>
+                  <%= sunrise %>&#xa0;&#xa0; | &#xa0;&#xa0;  <%= sunset %> 
+                  <p> Sunrise | Sunset </p>
+                <%}%> 
+            </div>
         </div>
-        <div>
-          <div class="tempmin">
+        <div class="tempmin item"> <!-- Temp low high -->
+            <% if(tempMin) {%>
+              <img src="/images/temperature.png" alt="temperature-icon">
+              <%}%>
+          <div class="">
               <% if(tempMin) {%>
-             Low: <%= tempMin %>&#xa0;&#xa0; | &#xa0;&#xa0; 
+                <%= tempMin %>&#x2103;&#xa0;&#xa0; | &#xa0;&#xa0; <%= tempMax %>&#x2103;
+                <p> Temp Low | High </p>
              <%}%>
             </div>
-          <div class="tempmax"> 
-              <% if(tempMax) {%>
-            High: <%= tempMax %>
-            <%}%>
-          </div>
         </div>
       </div>
     </div>

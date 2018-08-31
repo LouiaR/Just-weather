@@ -5,21 +5,37 @@
 }
 
 body {
-  margin: 0;
+  background: linear-gradient(129deg, #00000078 46%, #0c0e0e75 78%),url(/images/bg.jpg) no-repeat;
+  font-size: 17px;
+  background-position: 72% 41%;
 }
 
+  p {color: #fff;}
+ 
 .weather-container {
   padding: 0 2rem;
+  color: #fff;
 }
 
-header {
-  background: red;
+.weather-how a {
+  display:inline-block;
+	border:1px solid ;
+	border-radius:100px;
+	padding: .3em 1.2em;
+	margin:5px;
+	background-size: 200% 100%;	
+}
+
+.weather-how a:hover, 
+.weather-how a:focus {
+  background: #fff;
+  color: #009688;
 }
 
 .weather-head {
   display: flex;
   justify-content: space-between;
-  height: 15vh;
+  height: 4.5rem;
   margin-bottom: 5rem;
   align-items: center;
 }
@@ -27,16 +43,25 @@ header {
 .weather-find .weather-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 div a {
   text-decoration: none;
-  color: #fff;
+  color: #dae2df;
 }
 
-div a:hover {
+.logo span {
+  font-size: 148%;
+  position: relative;
+  left: 11px;
+}
+
+.logo { font-size: 156%; }
+
+div a:hover,
+.logo:hover {
   text-decoration: none;
-  background: green;
   color: #fff;
 }
 
@@ -47,7 +72,11 @@ div a:hover {
   font-size: 95%;
   text-transform: capitalize;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
+
+.weather-btn img{ vertical-align: middle; }
 
 .weather-btn:hover,
 .weather-btn:focus {
@@ -57,43 +86,115 @@ div a:hover {
 
 .weather-container input,
 .weather-container button {
-  padding: 8px 10px;
+  padding: 10px 15px;
+  margin-left: 8px;
+}
+
+form { display: flex; }
+
+.temp { font-size: 270%; }
+
+.icon img { 
+  margin-left: 2rem;
+  width: 5rem;
+  vertical-align: middle;
+}
+
+.weather-box {
+  padding: 2rem;
+  margin-top: 2.6rem;
+  background: #087a85d1;
+  border: 1px solid #00800000;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.error {
+  padding: 2rem;
 }
 
 .weather-location {
-  display: flex;
-  justify-content: center;
-}
-
-.weather-location {
-  margin-top: 2rem;
-  font-size: 1.3rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.weather-info {
-  flex-direction: column;
-}
-
-.icon {
-  width: 20vw;
-}
-
-img { width: 100%; }
-
-.item {
+  font-size: 180%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.desc { 
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  font-size: 120%; 
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.4rem;
+}
+
 div.weather-sys,
 div .weather-main {
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .weather-sys div {
   display: flex;
+  flex-direction: column;
 }
 
+.icon-center { text-align: center; } 
+
+div.how,
+p.how { 
+  font-size: 177%; 
+  margin-top: 4rem;
+}
+
+button.o-buttons {
+  color: #fff;
+  border-color: #fff;
+}
+
+footer  {
+    text-align: center;
+    margin-top: 5rem;
+    padding-bottom: 10px;
+}
+
+
+/* Media query   */
+@media all and (max-width: 620px) {
+  body { 
+    font-size: 14px;
+  }
+
+ .item { height: auto;}
+
+  .weather-container {
+    padding: 0 5px;
+    margin-bottom: 15px;
+  }
+  .weather-sys div { padding-bottom: 8px; }
+  
+  .weather-find .weather-container,
+  .weather-sys,
+  form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .weather-container input, .weather-container button{
+    margin-bottom: 10px;
+  }
+
+  .logo span {
+    font-size: 154%;
+    left: 10px;
+  }
+
+  footer  {
+    margin-top: 2rem;
+}
+
+}

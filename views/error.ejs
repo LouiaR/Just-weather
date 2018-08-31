@@ -1,7 +1,16 @@
 <% include partials/header %>
-<p> <%= error %></p>
-<ul>
-  <li>To make it more precise put the city's name and the name of the country or 2-letter country code on the provided field.</li>
-  <li>Exasmple - city: London | country: UK or United Kingdom ,  city: Berlin | country: Germany or DE</li>
-</ul>
-<% include partials/footer %>
+  <div class="weather-container">
+      <div class="weather-container">
+          <button class="o-buttons o-buttons-icon o-buttons-icon--arrow-left">
+            <a href="/"> Go back </a>
+          </button>
+          <div class="weather-container">
+            <div class="how">
+              <p> <%= error %></p>
+              <p>To make it more precise put the city's name and the name of the country or 2-letter country code on the provided field.</p>
+              <p>Example - city: London | country: UK or United Kingdom ,  city: Berlin | country: Germany or DE</p>
+            </div>
+          </div>
+      </div>
+  </div>  
+    <% include partials/footer %>

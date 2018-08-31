@@ -3,7 +3,8 @@ const route = express.Router();
 const controllers = require('../controllers/locationController');
 
 route.get('/', (req, res) => {
-  res.render('home',{ 
+  res.render('home', { 
+    addClass: '',
     city: '',
     country: '',
     temp: '',
@@ -23,10 +24,12 @@ route.get('/', (req, res) => {
 route.post('/', controllers.getWeather);
 
 route.get('/error', (req, res) => {
-  res.render('error', { error : "We couldn't find any match for the information you have provided, please go to how it works for mor info." });
+  res.render('error', { error : `We couldn't find any match for the information you have provided, please go to how it works for mor info.` });
 });
 
 route.get('/howitworks', (req, res) => {
   res.render('howItWorks');
 })
+
+
 module.exports = route;
